@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Registro-de-Usuario">
+    <meta name="keywords" content="comunidad,reciclaje,grupo,UG">
+    <meta name="Author"  content="Andres Eliceo Chavez Jimenez">
+    <link rel="stylesheet" href="/css/index.css">
+    <title>Registro de Usuarios</title>
+    <style>
+        #div-main{
+            display: grid;
+            justify-content: center;
+        }
+        #formulario{
+            max-width: 600px;
+            background-color: white;
+            margin: 30px auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        #form-registro-user{
+            display: grid;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px;
+            padding: 10px;
+        }
+        .titulo{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .seccion {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px;
+            width: 100%;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        #botones-registros{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            margin: 10px;
+        }
+
+        #botones-registros button{
+            padding: 10px;
+            margin: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #botones-registros button:hover{
+            background-color: #45a049;
+        }
+        .error-message{
+            color: red;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="id_container">
+        <header>
+            <div class="header-logo">
+                <img class="div_logo_header" src="https://pbs.twimg.com/media/GbtRafJW4BEozsZ?format=png&name=small" alt="logo">
+            </div>
+            <div class="header-botones">
+                <div id="botones-registro">
+                    <button onclick="window.location.href='formRegistroUser.html'">Registrar</button>
+                    <button>Iniciar Sesion</button>
+                </div>
+                <div id="botones-pagina">
+                    <nav>
+                        <button id="btnMenu">___<br>___<br>___</button>
+                        <ul class="menu">
+                            <li><a id="inicio" href="index.html" class="tit">Inicio</a></li>
+                            <li><a id="quienes-somos" href="quienesSomos.html" class="tit">Funny Recycle</a></li>
+                            <li><a id="point-recoleccion" href="recoleccion.html" class="tit">Puntos de Recolección</a></li>
+                            <li><a id="informe" href="informeRecoleccion.html" class="tit">Informe de Recolección</a></li>
+                            <li><a id="servicio" href="separacion.html" class="tit">Servicios</a></li>
+                        </ul>
+                        <ul class="menuDesplegable"></ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div id="div-main">
+                    <div id="formulario">
+                        <div class="titulo" style="color: #2e7d32;">
+                            <h1>Registro de Usuario</h1>
+                        </div>
+                        <form id="form-registro-user" action="" onsubmit="return validarFormulario()">
+                            <div class="seccion">	
+                                <div class="div-nombre">
+                                    <label for="idNombres">Nombres:</label><br>
+                                    <input type="text" id="idNombres" name="InputNoms" placeholder="Juan Carlos"/>
+                                    <div class="error-message" id="error-nombre"></div>
+                                </div>
+                                <div class="div-apellido">
+                                    <label for="idApellidos">Apellidos:</label><br>
+                                    <input type="text" id="idApellidos" name="inputApels" placeholder="Bodoque Ortega"/>
+                                    <div class="error-message" id="error-apellido"></div>
+                                </div>
+                            </div>
+                            <div class="seccion" style="display: block;">	
+                                <div class="div-CI">
+                                    <label for="idCI">Cedula de Identidad:</label><br>
+                                    <input type="text" id="idCI" name="inputCI" placeholder="0912345678"/>
+                                    <div class="error-message" id="error-CI"></div>
+                                </div>
+                            </div>
+                            <div class="seccion" style="display: block;">
+                                <div class="div-date">
+                                    <label for="idDate">Fecha de Nacimiento:</label><br>
+                                    <input type="date" name="inputDate" id="idDate" min="6">
+                                    <div class="error-message" id="error-date"></div>
+                                </div>
+                            </div>
+                            <div class="seccion" style="display: block;">
+                                <div class="div-sector" >
+                                    <Label for="idSector">Sector:</Label><br>
+                                    <select name="Sectores" id="idSector">
+                                        <option value="">Seleccione...</option>
+                                        <option value="norte">Norte</option>
+                                        <option value="centro">Centro</option>
+                                        <option value="sur">Sur</option>
+                                        <option value="este">Este</option>
+                                        <option value="oeste">Oeste</option>
+                                    </select>
+                                    <div class="error-message" id="error-sector"></div>
+                                </div>
+                            </div>
+                            <div class="seccion" style="display: block;">
+                                <div class="div-address">
+                                    <Label for="idDireccion">Dirección:</Label><br>
+                                    <input type="text" id="idDireccion" name="inputDireccion" placeholder="17 y Portete"/>
+                                    <div class="error-message" id="error-address"></div>
+
+                                </div>
+                            </div>
+                            <div class="seccion">
+                                <div class="div-CodP">
+                                    <label for="idCodP">Codigo Postal:</label><br>
+                                    <input type="text" id="idCodP" name="inputCodP" placeholder="090607"/>
+                                    <div class="error-message" id="error-CodP"></div>
+
+                                </div>
+                                <div class="div-cellphone">
+                                    <Label for="idTelefono">Teléfono:</Label><br>
+                                    <input type="text" id="idTelefono" name="inputTelefono" placeholder="0987654321"/>
+                                    <div class="error-message" id="error-cellphone"></div>
+
+                                </div>
+                            </div>
+                            <div class="seccion" style="display: block;">
+                                <div class="div-correo">
+                                    <Label for="idCorreo">Correo:</Label><br>
+                                    <input type="text" id="idCorreo" name="inputCorreo" placeholder="ejemplo@correo.com"/>
+                                    <div class="error-message" id="error-correo"></div>
+
+                                </div>
+                            </div>
+                            <div class="seccion">
+                                <div class="div-contra">
+                                    <label for="idContrasena">Contraseña:</label><br>
+                                    <input type="password" id="idContrasena" name="inputContrasena">
+                                    <div class="error-message" id="error-contrasena"></div>
+
+                                </div>
+                                <div class="div-contra2">
+                                    <label for="idContrasena2">Confirmar Contraseña:</label><br>
+                                    <input type="password" id="idContrasena2" name="inputContrasena2">
+                                    <div class="error-message" id="error-contrasena2"></div>
+                                </div>
+                            </div>
+                            <div id="botones-registros">
+                                <button type="submit">Registrar</button>
+                                <button typer="reset">Cancelar</button>
+                            </div>
+                        </form>
+                    </div>
+            </div>
+        </main>
+        <footer>
+            <div class="div_footer_header">
+                <div class="div_logo_footer">
+                    <img width="70" height="70" src="https://pbs.twimg.com/media/GbtRafJW4BEozsZ?format=png&name=small" alt="logo">
+                    <p>Funny Recycle</p>
+                </div>
+                <div class="div_redes">
+                    <img src="https://pbs.twimg.com/media/Gb0TPeuWIAU84Qb?format=png&name=small" alt="Facebook-logo">
+                    <img src="https://pbs.twimg.com/media/Gb0TPbIXIAEadwv?format=png&name=small" alt="Instagram-logo">
+                    <img src="https://pbs.twimg.com/media/Gb0TPewXQAg0Mr3?format=png&name=small" alt="x-Twitter-logo">
+                </div>
+                </div>
+                <hr>
+                <div class="div_footer_main">
+                    <div>
+                        <p>Andres Eliceo Chavez Jimenez - Plataforma de Reciclaje Domiciliario</p>
+                    </div>
+                <div class="div_derechos">
+                    <p>2024 © Todos los derechos reservados</p>
+                    <p>Privacy Policy Terms and conditions</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script type="text/javascript" src="/js/validacionHeaderFooter.js"></script>
+    <script>
+        function validarFormulario(){
+            limpiarCampos();
+            let esValido = true;
+            //validar campos
+            const nombres = document.getElementById("idNombres");
+            const apellidos = document.getElementById("idApellidos");
+            const CI = document.getElementById("idCI");
+            const date = document.getElementById("idDate");
+            const sector = document.getElementById("idSector");
+            const direccion = document.getElementById("idDireccion");
+            const codP = document.getElementById("idCodP");
+            const telefono = document.getElementById("idTelefono");
+            const correo = document.getElementById("idCorreo");
+            const contrasena = document.getElementById("idContrasena");
+            const contrasena2 = document.getElementById("idContrasena2");
+            let nombreRegEx = /^[a-zA-Z]+$/;
+            
+
+            document.querySelectorAll(".error-message").forEach(e => e.textContent = "");
+            //validar nombres
+            if(nombres.value.trim() === ""){
+                document.getElementById("error-nombre").textContent = "El nombre es obligatorio.";
+                esValido = false;
+            }else if(nombres.value.trim().length < 3){
+                document.getElementById("error-nombre").textContent = "El nombre debe tener al\nmenos 3 caracteres.";
+                esValido = false;
+            }else if(!nombreRegEx.test(nombres.value.trim())){
+                document.getElementById("error-nombre").textContent = "El nombre debe ser alfabetico.";
+                esValido = false;
+            }
+
+            //validar apellidos
+            if(apellidos.value.trim() === ""){
+                document.getElementById("error-apellido").textContent = "El apellido es obligatorio.";
+                esValido = false;
+            }else if(apellidos.value.trim().length < 3){
+                document.getElementById("error-apellido").textContent = "El apellido debe tener al menos 3 caracteres.";
+                esValido = false;
+            
+            }else if(!nombreRegEx.test(apellidos.value.trim())){
+                document.getElementById("error-apellido").textContent = "El apellido debe ser alfabetico.";
+                esValido = false;
+            }
+
+            //validar CI
+            if(CI.value.trim() === "" || !/^\d{10}$/.test(CI.value.trim())){
+                document.getElementById("error-CI").textContent = "Ingresa un CI válido (10 dígitos).";
+                esValido = false;
+            }
+            //validar Fecha de Nacimiento
+            let fechaActual = new Date();
+            let fechaIngresada = new Date(date.value);
+            if (date.value === "") {
+                document.getElementById("error-date").textContent = "Ingresa una fecha de nacimiento.";
+                esValido = false;
+            } else if (fechaIngresada > fechaActual) {
+                document.getElementById("error-date").textContent = "La fecha de nacimiento no puede ser mayor a la fecha actual.";
+                esValido = false;
+            }
+            // Validar Sector
+            if (sector.value === "") {
+                document.getElementById("error-sector").textContent = "Selecciona un sector.";
+                esValido = false;
+            }
+
+            // Validar Dirección
+            if (direccion.value.trim() === "") {
+                document.getElementById("error-address").textContent = "La dirección es obligatoria.";
+                esValido = false;
+            }
+
+            // Validar Código Postal
+            if (codP.value.trim() === "" || !/^\d{6}$/.test(codP.value.trim())) {
+                document.getElementById("error-CodP").innerHTML = "Ingresa un Código Postal válido <br>(6 dígitos).";
+                esValido = false;
+            }
+            //validar Telefono
+            if(telefono.value.trim() === "" || !/^\d{10}$/.test(telefono.value.trim())){
+                document.getElementById("error-cellphone").innerHTML = "Ingresa un teléfono válido <br>(10 dígitos).";
+                esValido = false;
+            }
+            //validar Correo
+            if(correo.value.trim() === "" || !/\S+@\S+\.\S+/.test(correo.value.trim())){
+                document.getElementById("error-correo").textContent = "Ingresa un correo válido.";
+                esValido = false;
+            }
+            //validar Contraseña
+            if(contrasena.value.trim() === ""){
+                document.getElementById("error-contrasena").textContent = "La contraseña es obligatoria.";
+                esValido = false;
+            }else if(contrasena.value.trim().length < 8){
+                document.getElementById("error-contrasena").textContent = "La contraseña debe tener al menos 8 caracteres.";
+                esValido = false;
+            }
+
+            // validar confirmación de contraseña
+            if(contrasena2.value.trim() === ""){
+                document.getElementById("error-contrasena2").textContent = "La contraseña es obligatoria.";
+                esValido = false;
+            }else if(contrasena.value.trim() !== contrasena2.value.trim()){
+                document.getElementById("error-contrasena2").textContent = "Las contraseñas no coinciden.";
+                esValido = false;
+            }
+
+            if(esValido){
+                alert("Formulario enviado con éxito");
+                document.getElementById("form-registro-user").reset();
+            }
+            return esValido;
+        }
+
+        function limpiarCampos(){
+            
+        }
+    </script>
+</body>
+</html>

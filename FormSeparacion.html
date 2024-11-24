@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Formulario de separacion de reciclaje">
+    <meta name="keywords" content="comunidad,reciclaje,grupo,UG">
+    <meta name="autor" content="Arroba Carrillo Omar Andrés">
+    <link rel="stylesheet" href="/css/index.css">
+    <title>Formulario de separacion de reciclaje</title>
+    <style>
+        /*Interna*/
+        *{
+            font-size: 17px;
+        }
+
+        #FormSeparaPrinc{
+            background-color: white;
+            padding: 30px;
+        }
+
+        div{
+            margin-bottom: 25px;
+        }
+
+        li{
+            margin-bottom: 10px;
+        }
+
+        ul{
+            list-style: none;
+            padding: 0;
+        }
+        
+        #FormSeparaPrinc{
+            width: 50%;
+            margin: auto;
+        }
+
+        #Boton{
+            text-align: center;
+        }
+
+        #pregunta,#correo,#correoV {
+            width: 90%;
+        }
+
+
+
+
+    </style>
+</head>
+
+
+<body>
+    <header>
+        <div class="header-logo">
+            <img class="div_logo_header" src="https://pbs.twimg.com/media/GbtRafJW4BEozsZ?format=png&name=small" alt="logo">
+        </div>
+        <div class="header-botones">
+            <div id="botones-registro">
+                <button onclick="window.location.href='formRegistroUser.html'">Registrar</button>
+                <button>Iniciar Sesion</button>
+            </div>
+            <div id="botones-pagina">
+                <nav>
+                    <button id="btnMenu">___<br>___<br>___</button>
+                    <ul class="menu">
+                        <li><a id="inicio" href="index.html" class="tit">Inicio</a></li>
+                        <li><a id="quienes-somos" href="quienesSomos.html" class="tit">Funny Recycle</a></li>
+                        <li><a id="point-recoleccion" href="recoleccion.html" class="tit">Puntos de Recolección</a></li>
+                        <li><a id="informe" href="informeRecoleccion.html" class="tit">Informe de Recolección</a></li>
+                        <li><a id="servicio" href="separacion.html" class="tit">Servicios</a></li>
+                    </ul>
+                    <ul class="menuDesplegable"></ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div style="width: 70%; margin: 25px auto; text-align:center">
+            <hr style="width: 90%; margin: 0 auto;">
+            <h2 style="font-size: 25px">Formulario de separación de reciclaje de la comunidad</h2>
+            <hr style="width: 90%; margin: 0 auto;">
+        </div>
+    </main>
+
+    <form action="" id="FormSeparaPrinc" onsubmit="return validarFormSepara()">
+        <div>
+            <label for="correo">Correo electrónico:</label>
+            <br>
+            <input type="text" id="correo" name="correo" placeholder="Escribe aqui tu correo"/>
+        </div>
+        <div>
+            <label for="correoV">Repita su correo electrónico:</label>
+            <br>
+            <input type="text" id="correoV" name="correoV" placeholder="Vuelve a escribir tu correo"/>
+        </div>
+        <div class="MetodosSepara">
+            <ul>
+                <label for="">¿En su sector hacen campañas de recolección?</label>
+                <li>
+                    <input type="radio" id="SI" name="metodosR" value="SI"/>
+                    <label for="SI">Si</label>
+                </li>
+                <li>
+                    <input type="radio" id="NO" name="metodosR" value="NO"/>
+                    <label for="NO">No</label>
+                </li>
+                <li>
+                    <input type="radio" id="Algunas veces" name="metodosR" value="ALGUNAS"/>
+                    <label for="ALGUNAS">Algunas veces</label>
+                </li>
+            </ul>
+        </div>
+        <div class="MetodosR">
+            <ul>
+            <label for="">¿Conocía alguno de estos métodos de separación? ¿Cuáles?</label>
+            <br>
+            <li>
+                <input type="checkbox" id="metodos1" name="metodos" value="rselectiva"/>
+                <label for="metodos1">Recolección selectiva</label>
+            </li>
+            <li>
+                <input type="checkbox" id="metodos2" name="metodos" value="rseparacion"/>
+                <label for="metodos2">Métodos manuales de separación</label>
+            </li>
+            <li>
+                <input type="checkbox" id="metodos3" name="metodos" value="ravanzada"/>
+                <label for="metodos3">Tecnologías avanzadas de clasificación</label>
+            </li>
+            <li>
+                <input type="checkbox" id="metodos4" name="metodos" value="rmagnetica"/>
+                <label for="metodos4">Separación magnética</label>
+            </li>
+            <li>
+                <input type="checkbox" id="metodos5" name="metodos" value="rflotacion"/>
+                <label for="metodos5">Flotación para plásticos</label>
+            </li>
+            <li>
+                <input type="checkbox" id="metodos6" name="metodos" value="ninguno"/>
+                <label for="metodos6">Ninguno</label>
+            </li>
+            </ul>
+        </div>
+        <div>
+            <label for="material">¿Cuál es el material que más reciclan en su casa?</label>
+            <br>
+            <select name="material" id="material">
+                <option value="">Seleccione 1 opción...</option>
+                <option value="Metal">Metal</option>
+                <option value="Plastico">Plastico</option>
+                <option value="Papel">Papel</option>
+                <option value="Carton">Carton</option>
+                <option value="No">Nosotros no reciclamos</option>
+            </select>
+        </div>
+        <div id="texto">
+            <label for="material">¿Consideras que el reciclaje es una responsabilidad individual o colectiva? ¿Por qué?</label>
+            <br>
+            <textarea name="pregunta" id="pregunta" placeholder="Escribe tu respuesta aquí"></textarea>
+        </div>
+        <div id="diverror">
+
+        </div>
+        <div id="Boton">
+            <button type="submit">Guardar</button>
+            <button type="reset" onclick="LimpiarTodosLosErrores()">Cancelar</button>
+        </div>
+        
+    </form>
+
+
+
+    <footer>
+        <div class="div_footer_header">
+            <div class="div_logo_footer">
+                <img width="70" height="70" src="https://pbs.twimg.com/media/GbtRafJW4BEozsZ?format=png&name=small" alt="logo">
+                <p>Funny Recycle</p>
+            </div>
+            <div class="div_redes">
+                <img src="https://pbs.twimg.com/media/Gb0TPeuWIAU84Qb?format=png&name=small" alt="Facebook-logo">
+                <img src="https://pbs.twimg.com/media/Gb0TPbIXIAEadwv?format=png&name=small" alt="Instagram-logo">
+                <img src="https://pbs.twimg.com/media/Gb0TPewXQAg0Mr3?format=png&name=small" alt="x-Twitter-logo">
+            </div>
+        </div>
+        <hr>
+        <div class="div_footer_main">
+            <div>
+                <p>Arroba Carrillo Omar Andrés - Interfaz de Separación de reciclaje de la comunidad.</p>                  
+            </div>
+                <div class="div_derechos">
+                <p>2024 © Todos los derechos reservados</p>
+                <p>Privacy Policy Terms and conditions</p>
+            </div>
+        </div>
+    </footer>
+    
+
+
+    <script>
+    //--------
+    //Para formulario de separacion
+    function validarFormSepara() {
+        let esValido = true;
+        LimpiarTodosLosErrores();
+
+        //Caja de texto correo
+        let correo = document.getElementById("correo");
+
+        if (correo.value === "") {
+            MensajeError("*El correo es necesario", correo);
+            esValido = false;
+        } else if (correo.value.length > 50) {
+            esValido = false;
+        } else {
+            // Expresión regular para comprobar que el correo termine en @hotmail.com o @gmail.com
+            const regex = /^[^\s@]+@(hotmail\.com|gmail.com)$/;
+            if (!regex.test(correo.value)) {
+                if (correo.value.includes(' ')) {
+                    MensajeError("*No deben existir espacios entre el correo", correo);
+                } else {
+                    MensajeError("*Debe ser un correo válido (hotmail.com o gmail.com)", correo);
+                }
+                esValido = false;
+            }
+        }
+
+
+        //Comprobar que el correo sea el mismo
+        let correoV = document.getElementById("correoV");
+        if (correoV.value !== correo.value) {
+            MensajeError("*El correo debe coincidir con el correo inicial", correoV);
+            esValido = false;
+        }
+
+
+        
+        //Radio de metodos conocidos
+        let metodosR = document.querySelector('input[name="metodosR"]:checked');
+        if(!metodosR){
+            MensajeError("*Seleccione una opción", document.querySelector('input[name="metodosR"]').parentNode);
+            esValido=false;
+        }
+
+
+        //Checkbox de metodos conocidos
+        let metodos = document.querySelectorAll('input[name="metodos"]:checked');
+        if(metodos.length===0){
+            MensajeError("*Debe seleccionar al menos un método", document.querySelector('input[name="metodos"]').parentNode);
+            esValido = false;
+        }
+
+
+
+        //Combo de materiales
+        let material = document.getElementById("material");
+        if (material.value === ""){
+            MensajeError("*Seleccione al menos un material de la lista", material);
+            esValido = false;
+        }
+
+
+
+        // Validación del textarea
+        const textarea = document.getElementById('pregunta');
+        const texto = textarea.value.trim();
+        
+        if(texto.length < 1){
+            MensajeError("*Debes escribir al menos Si o No", textarea);
+            textarea.focus();
+            return false;
+        }else if(texto.length > 50) {
+            MensajeError("*Has excedido el límite de 50 caracteres", textarea);
+            textarea.focus();
+            return false;
+        }
+
+        return esValido;
+    }
+
+
+
+
+    function MensajeError(mensaje, elemento) {
+        let span = document.createElement("span");
+        span.textContent = mensaje;
+        span.className = "error";
+        span.style.fontWeight = "bold";
+        span.style.marginLeft = "10px";
+
+        let label = elemento.closest("div").querySelector("label");
+        label.parentNode.insertBefore(span, label.nextSibling);
+    }
+
+    function LimpiarTodosLosErrores() {
+        const errores = document.querySelectorAll("span.error");
+        errores.forEach(error => error.remove());
+    }
+
+    </script>
+
+
+</body>
+</html>

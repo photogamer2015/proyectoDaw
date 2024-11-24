@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Quienes Somos">
+        <meta name="keywords" content="comunidad,reciclaje,grupo,UG">
+        <meta name="Author"  content="Juliet Diocelin Ortuño Sanchez">
+        <link rel="stylesheet" href="/css/index.css">
+        <title> FunnyRecycle </title>
+        <style>
+        
+
+        .contenedor_img{
+            position: relative;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: auto;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            overflow: hidden;
+            border: 10px;
+        }
+
+        .contenedor_img img{
+            width: 100%;
+            height: auto;
+            display: block; 
+        }
+ 
+        #Formulario {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: auto;
+            width: 100%;
+            max-width: 600px;
+            box-sizing: border-box;
+        }
+
+        label {
+            font-size: 16px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        input{
+            margin-bottom: 8px;
+        }
+
+        select {
+            margin-bottom: 8px;            
+            display: flex;
+            flex-direction: column;
+        }
+        
+        #contedor_opciones div label {
+            display: inline-flex;
+            align-items: center;
+            margin: 8px 0;
+        }
+
+        /* Espacio entre el input y el texto */
+        #contedor_opciones div input {
+            margin-right: 10px;
+        }
+
+        textarea {
+            line-height: 1;
+            font-size: 16px;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 100%;
+            resize: vertical;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+            cursor:pointer;
+        }
+
+        .mensaje-error {
+            font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            color: red;
+            font-size: 12px;
+            display: block;
+            margin-top: 5px;
+        }
+
+        </style>
+
+    </head>
+    <header>
+        <div class="header-logo">
+            <img class="div_logo_header" src="https://pbs.twimg.com/media/GbtRafJW4BEozsZ?format=png&name=small" alt="logo">
+        </div>
+        <div class="header-botones">
+            <div id="botones-registro">
+                <button onclick="window.location.href='formRegistroUser.html'">Registrar</button>
+                <button>Iniciar Sesion</button>
+            </div>
+            <div id="botones-pagina">
+                <nav>
+                    <button id="btnMenu">___<br>___<br>___</button>
+                    <ul class="menu">
+                        <li><a id="inicio" href="index.html" class="tit">Inicio</a></li>
+                        <li><a id="quienes-somos" href="quienesSomos.html" class="tit">Funny Recycle</a></li>
+                        <li><a id="point-recoleccion" href="recoleccion.html" class="tit">Puntos de Recolección</a></li>
+                        <li><a id="informe" href="informeRecoleccion.html" class="tit">Informe de Recolección</a></li>
+                        <li><a id="servicio" href="separacion.html" class="tit">Servicios</a></li>
+                    </ul>
+                    <ul class="menuDesplegable"></ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <body>
+        <main>
+            <div class="contenedor_img">
+                <img src="https://www.renovablesverdes.com/wp-content/uploads/2021/08/habitos-de-reciclaje.jpg.webp" alt="imagen_principal" class="reciclaje_img">
+            </div>
+
+            <form action="" id="Formulario" onsubmit="return validarFormulario()">
+                <div>
+                    <label for="nombres">Nombres Completos: </label>
+                    <input type="text" id="nombres" name="nombres"/>
+                    <div id="errorNombres" class="mensaje-error"></div>
+                </div>
+                <div>
+                    <label for="email">Email: </label>
+                    <input type="text" id="email" name="email"/>
+                    <div id="errorEmail" class="mensaje-error"></div>
+                </div>
+                <div>
+                    <label for="genero"> Genero : </label>
+                    <select type="text" id="genero" name="genero">
+                        <option value=""> Seleccione </option>
+                        <option value="masculino"> Masculino </option>
+                        <option value="fenemino"> Fenemino </option>
+                        <option value="otros"> Prefiero no decirlo </option>
+                    </select>
+                    <div id="errorGenero" class="mensaje-error"></div>
+                </div>
+                <div id="contedor_opciones">
+                    <div>
+                        <label for> Califica nuestro servicio : </label><br>
+                        <input type="radio" id="insatisfecho" name="valor" value="insatisfecho"/>
+                        <label for="insatisfecho">Insatisfecho</label>
+                        <input type="radio" id="neutral" name="valor" value="neutral"/>
+                        <label for="neutral">Neutral</label>
+                        <input type="radio" id="satisfecho" name="valor" value="satisfecho"/>
+                        <label for="satisfecho">Satisfecho</label>
+                        <div id="errorValor" class="mensaje-error"></div>
+                    </div>
+                    <div>
+                        <label>¿Qué materiales reciclaste con nosotros?</label><br>
+                        <input type="checkbox" id="vidrio" name="material" value="Vidrio">
+                        <label for="vidrio">Vidrio</label><br>
+                        <input type="checkbox" id="plastico" name="material" value="Plástico">
+                        <label for="plastico">Plástico</label><br>
+                        <input type="checkbox" id="carton" name="material" value="Cartón/Papel">
+                        <label for="carton">Cartón/Papel</label><br>
+                        <input type="checkbox" id="metal" name="material" value="Metal">
+                        <label for="metal">Metal</label>
+                    </div>
+                </div>
+                <div>
+                    <label for="mejora">¿Cómo podríamos mejorar nuestros servicios?</label><br>
+                    <textarea id="mejora" name="mejora" rows="5" placeholder="Escríbenos tus sugerencias"></textarea>
+                    <div id="errorMejora" class="mensaje-error"></div>
+                </div>
+                <div>
+                    <button type="submit"> Enviar  </button>
+                </div>
+            </form>
+        </main>
+        <script>
+            function validarFormulario() {
+            limpiarCampos(); 
+            let esValido = true;
+            const nombres = document.getElementById("nombres");
+            const email = document.getElementById("email");
+            const genero = document.getElementById("genero");
+            const calificacion = document.querySelector('input[name="valor"]:checked');
+            const sugerencias = document.getElementById("mejora");
+            const materiales = document.querySelectorAll('input[name="material"]:checked');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; /*VALIDAR EMAIL*/
+
+            // Validación de nombres
+            const errorNombres = document.getElementById("errorNombres");
+            if (nombres.value.trim() === "") {
+                errorNombres.textContent = "Nombre es requerido.";
+                esValido = false;
+            } else if (nombres.value.trim().length < 5) {
+                errorNombres.textContent = "El nombre debe tener al menos 5 caracteres.";
+                esValido = false;
+            }
+
+            // Validación de email
+            const errorEmail = document.getElementById("errorEmail");
+            if (email.value.trim() === "") {
+                errorEmail.textContent = "Email es requerido.";
+                esValido = false;
+            } else if (!emailRegex.test(email.value.trim())) {
+                errorEmail.textContent = "Ingresa un correo electrónico válido.";
+                esValido = false;
+            }
+
+            // Validación de género
+            const errorGenero = document.getElementById("errorGenero");
+            if (genero.value.trim() === "") {
+                errorGenero.textContent = "Selecciona un género.";
+                esValido = false;
+            }
+
+            // Validación de calificación
+            const errorCalificacion = document.getElementById("errorValor");
+            if (!calificacion) {
+                errorCalificacion.textContent = "Selecciona una calificación.";
+                esValido = false;
+            }
+
+            // Validación de sugerencias
+            const errorSugerencias = document.getElementById("errorMejora");
+            if (sugerencias.value.trim() === "") {
+                errorSugerencias.textContent = "Por favor escribe tus sugerencias.";
+                esValido = false;
+            }
+            if (esValido) {
+                alert("Gracias por tus sugerencias.");
+            }
+
+            return esValido;
+        }
+
+        function limpiarCampos() {
+            // Eliminar mensajes de error previos
+            document.querySelectorAll(".mensaje-error").forEach((elemento) => {
+                elemento.textContent = "";
+            });
+        }
+        </script>
+        <footer>
+            <div class="div_footer_header">
+                <div class="div_logo_footer">
+                    <img width="70" height="70" src="https://pbs.twimg.com/media/GbtRafJW4BEozsZ?format=png&name=small" alt="logo">
+                    <p>Funny Recycle</p>
+                </div>
+                <div class="div_redes">
+                    <img src="https://pbs.twimg.com/media/Gb0TPeuWIAU84Qb?format=png&name=small" alt="Facebook-logo">
+                    <img src="https://pbs.twimg.com/media/Gb0TPbIXIAEadwv?format=png&name=small" alt="Instagram-logo">
+                    <img src="https://pbs.twimg.com/media/Gb0TPewXQAg0Mr3?format=png&name=small" alt="x-Twitter-logo">
+
+                </div>
+            </div>
+            <hr>
+            <div class="div_footer_main">
+                <div>
+                    <p>Ortuño Sánchez Juliet Diocelin - Plataforma de Reciclaje Domiciliario</p>
+                </div>
+                <div class="div_derechos">
+                    <p>2024 © Todos los derechos reservados</p>
+                    <p>Privacy Policy Terms and conditions</p>
+                </div>
+            </div>
+           
+        </footer>
+    </body>
+</html>

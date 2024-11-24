@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Registro de nuevos puntos de recolección para la comunidad.">
+    <meta name="keywords" content="registro, reciclaje, comunidad, puntos de recolección">
+    <meta name="author" content="Cesar Xavier Villacis Alvia">
+    <link rel="stylesheet" href="/css/index.css">
+    <title>Registrar Punto de Recolección</title>
+    <style>
+        section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin: 20px auto;
+            width: 100%;
+            max-width: 300px; 
+        
+        }
+
+        form {
+            width: 200%;
+        }
+
+        input[type="text"], input[type="time"], select, input[type="submit"] {
+            width: 100%; 
+            padding: 10px;
+            margin: 10px ;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50; 
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #dde009;
+        }
+
+        #infoMaterial {
+            margin-top: 50px;
+            color: rgb(8, 0, 0);
+            background-color: rgb(221, 208, 19);
+        }
+
+        .div_derechos {
+            display: flex;
+            background-color: #5b815e;
+            justify-content: space-between;
+            padding: 30px;
+            color: white;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-logo">
+            <img class="div_logo_header" src="https://pbs.twimg.com/media/GbtRafJW4BEozsZ?format=png&name=small" alt="logo">
+        </div>
+        <div class="header-botones">
+            <div id="botones-registro">
+                <button onclick="window.location.href='formRegistroUser.html'">Registrar</button>
+                <button>Iniciar Sesion</button>
+            </div>
+            <div id="botones-pagina">
+                <nav>
+                    <button id="btnMenu">___<br>___<br>___</button>
+                    <ul class="menu">
+                        <li><a id="inicio" href="index.html" class="tit">Inicio</a></li>
+                        <li><a id="quienes-somos" href="quienesSomos.html" class="tit">Funny Recycle</a></li>
+                        <li><a id="point-recoleccion" href="recoleccion.html" class="tit">Puntos de Recolección</a></li>
+                        <li><a id="informe" href="informeRecoleccion.html" class="tit">Informe de Recolección</a></li>
+                        <li><a id="servicio" href="separacion.html" class="tit">Servicios</a></li>
+                    </ul>
+                    <ul class="menuDesplegable"></ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+<section>
+    <h2>Registrar Nuevo Punto de Recolección</h2>
+    <form id="registro-punto"><br>
+        <label for="nombre">Nombre de la persona:</label>
+        <input type="text" id="nombre" name="nombre" required><br>
+        <label for="direccion">Dirección:</label>
+        <input type="text" id="direccion" name="direccion" required><br>
+        <label for="materiales">Materiales a recoger:</label>
+        <select id="materiales" name="materiales" required>
+            <option value="">Seleccione un material...</option>
+            <option value="plasticos">Plásticos</option>
+            <option value="papel">Papel</option>
+            <option value="vidrio">Vidrio</option>
+            <option value="metales">Metales</option>
+        </select><br>
+        <label for="horario">Horario de Recolección:</label>
+        <input type="time" id="horario" name="horario" required><br>
+        <input type="submit" value="Registrar">
+    </form>
+    <div id="infoMaterial"></div>
+</section>
+
+<footer>
+    <div class="div_footer_header">
+        <div class="div_logo_footer">
+            <img width="70" height="70" src="https://pbs.twimg.com/media/GbtRafJW4BEozsZ?format=png&name=small" alt="logo">
+            <p>Funny Recycle</p>
+        </div>
+        <div class="div_redes">
+            <img src="https://pbs.twimg.com/media/Gb0TPeuWIAU84Qb?format=png&name=small" alt="Facebook-logo">
+            <img src="https://pbs.twimg.com/media/Gb0TPbIXIAEadwv?format=png&name=small" alt="Instagram-logo">
+            <img src="https://pbs.twimg.com/media/Gb0TPewXQAg0Mr3?format=png&name=small" alt="x-Twitter-logo">
+        </div>
+    </div>
+    <hr>
+    <div class="div_footer_main">
+        <p>Cesar Xavier Villacis Alvia - Formulario para punto de recoleccion</p>
+    </div>
+    <div class="div_derechos">
+        <p>2024 © Todos los derechos reservados</p>
+        <p>Privacy Policy Terms and conditions</p>
+    </div>
+</footer>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const formulario = document.getElementById('registro-punto');
+        const selectorMateriales = document.getElementById('materiales');
+        const infoMaterial = document.getElementById('infoMaterial');
+    
+        formulario.addEventListener('submit', function(event) {
+            let nombre = document.getElementById('nombre').value;
+            let direccion = document.getElementById('direccion').value;
+            let horario = document.getElementById('horario').value;
+    
+            if (!nombre || !direccion || !horario) {
+                alert('Por favor, completa todos los campos requeridos.');
+                event.preventDefault();
+                return; 
+            }
+    
+            if (!/^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/.test(horario)) {
+                alert('Por favor, introduce una hora válida (HH:MM).');
+                event.preventDefault();
+                return; 
+            }
+    
+            
+            alert('Registro guardado con éxito');
+           
+        });
+    
+        selectorMateriales.addEventListener('change', function() {
+            const material = selectorMateriales.value;
+            let info = '';
+    
+            switch (material) {
+                case 'plasticos':
+                    info = 'Los plásticos deben estar limpios y secos. Evitar incluir plásticos biodegradables.';
+                    break;
+                case 'papel':
+                    info = 'Incluir solo papel sin tratar y sin tintas tóxicas. No incluir papel carbón.';
+                    break;
+                case 'vidrio':
+                    info = 'El vidrio debe estar libre de contaminantes y separado por colores.';
+                    break;
+                case 'metales':
+                    info = 'Incluir metales ferrosos y no ferrosos. Limpiar cualquier residuo o suciedad.';
+                    break;
+                default:
+                    info = 'Seleccione un material para ver más información.';
+                    break;
+            }
+    
+            infoMaterial.textContent = info;
+        });
+    });
+</script>
+</body>
+</html>

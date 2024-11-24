@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Formulario de registro para voluntarios de reciclaje">
+    <meta name="keywords" content="formulario, reciclaje, voluntarios">
+    <meta name="author" content="Jorge Alexis Suárez Valarezo">
+    <link rel="stylesheet" href="/css/index.css">
+    <title>Formulario de Registro</title>
+    <style>
+        .formulario-container {
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .formulario-container h2 {
+            text-align: center;
+            color: #2e7d32;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input, 
+        .form-group select, 
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-group input[type="checkbox"],
+        .form-group input[type="radio"] {
+            width: auto;
+            margin-right: 10px;
+        }
+
+        .form-buttons {
+            text-align: center;
+        }
+
+        .form-buttons button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form-buttons button:hover {
+            background-color: #388e3c;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-logo">
+            <img class="div_logo_header" src="https://pbs.twimg.com/media/GbtRafJW4BEozsZ?format=png&name=small" alt="logo">
+        </div>
+        <div class="header-botones">
+            <div id="botones-registro">
+                <button onclick="window.location.href='formRegistroUser.html'">Registrar</button>
+                <button>Iniciar Sesion</button>
+            </div>
+            <div id="botones-pagina">
+                <nav>
+                    <button id="btnMenu">___<br>___<br>___</button>
+                    <ul class="menu">
+                        <li><a id="inicio" href="index.html" class="tit">Inicio</a></li>
+                        <li><a id="quienes-somos" href="quienesSomos.html" class="tit">Funny Recycle</a></li>
+                        <li><a id="point-recoleccion" href="recoleccion.html" class="tit">Puntos de Recolección</a></li>
+                        <li><a id="informe" href="informeRecoleccion.html" class="tit">Informe de Recolección</a></li>
+                        <li><a id="servicio" href="separacion.html" class="tit">Servicios</a></li>
+                    </ul>
+                    <ul class="menuDesplegable"></ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="formulario-container">
+            <h2>Registro de Voluntarios</h2>
+            <form id="registroForm">
+                <div class="form-group">
+                    <label for="nombre">Nombre completo</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu nombre completo">
+                    <div class="error-message" id="error-nombre"></div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Correo electrónico</label>
+                    <input type="email" id="email" name="email" placeholder="ejemplo@correo.com">
+                    <div class="error-message" id="error-email"></div>
+                </div>
+                <div class="form-group">
+                    <label for="telefono">Teléfono</label>
+                    <input type="tel" id="telefono" name="telefono" placeholder="0987654321">
+                    <div class="error-message" id="error-telefono"></div>
+                </div>
+                <div class="form-group">
+                    <label for="zona">Zona de participación</label>
+                    <select id="zona" name="zona">
+                        <option value="">Selecciona una zona</option>
+                        <option value="norte">Norte</option>
+                        <option value="sur">Sur</option>
+                        <option value="este">Este</option>
+                        <option value="oeste">Oeste</option>
+                    </select>
+                    <div class="error-message" id="error-zona"></div>
+                </div>
+                <div class="form-group">
+                    <label>Material de interés</label>
+                    <input type="checkbox" id="papel" name="material" value="papel"> Papel
+                    <input type="checkbox" id="plastico" name="material" value="plastico"> Plástico
+                    <input type="checkbox" id="vidrio" name="material" value="vidrio"> Vidrio
+                    <input type="checkbox" id="organico" name="material" value="organico"> Orgánico
+                    <div class="error-message" id="error-material"></div>
+                </div>
+                <div class="form-group">
+                    <label for="comentarios">Comentarios adicionales</label>
+                    <textarea id="comentarios" name="comentarios" rows="4" placeholder="Escribe tus comentarios aquí"></textarea>
+                </div>
+                <div class="form-buttons">
+                    <button type="button" onclick="validarFormulario()">Enviar</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <div class="div_footer_header">
+            <div class="div_logo_footer">
+                <img width="70" height="70" src="https://pbs.twimg.com/media/GbtRafJW4BEozsZ?format=png&name=small" alt="logo">
+                <p>Funny Recycle</p>
+            </div>
+            <div class="div_redes">
+                <img src="https://pbs.twimg.com/media/Gb0TPeuWIAU84Qb?format=png&name=small" alt="Facebook-logo">
+                <img src="https://pbs.twimg.com/media/Gb0TPbIXIAEadwv?format=png&name=small" alt="Instagram-logo">
+                <img src="https://pbs.twimg.com/media/Gb0TPewXQAg0Mr3?format=png&name=small" alt="x-Twitter-logo">
+            </div>
+        </div>
+        <hr>
+        <div class="div_footer_main">
+            <div>
+                <p>Jorge Alexis Suárez Valarezo - Plataforma de Reciclaje Domiciliario</p>
+            </div>
+            <div class="div_derechos">
+                <p>2024 © Todos los derechos reservados</p>
+                <p>Privacy Policy | Terms and conditions</p>
+            </div>
+        </div>
+    </footer>
+    <script type="text/javascript" src="/js/validacionHeaderFooter.js"></script>
+    <script>
+        function validarFormulario() {
+            let esValido = true;
+
+            const nombre = document.getElementById("nombre").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const telefono = document.getElementById("telefono").value.trim();
+            const zona = document.getElementById("zona").value;
+            const materiales = document.querySelectorAll('input[name="material"]:checked');
+
+            // Limpiar mensajes de error
+            document.querySelectorAll(".error-message").forEach(e => e.textContent = "");
+
+            // Validar nombre
+            if (nombre === "") {
+                document.getElementById("error-nombre").textContent = "El nombre es obligatorio.";
+                esValido = false;
+            }
+
+            // Validar email
+            if (email === "" || !/\S+@\S+\.\S+/.test(email)) {
+                document.getElementById("error-email").textContent = "Ingresa un correo válido.";
+                esValido = false;
+            }
+
+            // Validar teléfono
+            if (telefono === "" || !/^\d{10}$/.test(telefono)) {
+                document.getElementById("error-telefono").textContent = "Ingresa un teléfono válido (10 dígitos).";
+                esValido = false;
+            }
+
+            // Validar zona
+            if (zona === "") {
+                document.getElementById("error-zona").textContent = "Selecciona una zona.";
+                esValido = false;
+            }
+
+            // Validar materiales
+            if (materiales.length === 0) {
+                document.getElementById("error-material").textContent = "Selecciona al menos un material.";
+                esValido = false;
+            }
+
+            if (esValido) {
+                alert("Formulario enviado con éxito");
+                document.getElementById("registroForm").reset();
+            }
+        }
+    </script>
+</body>
+</html>
